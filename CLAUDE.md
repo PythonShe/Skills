@@ -1,6 +1,6 @@
 # skills
 
-Portable agent skills for fast workflows on lighter or weaker models. Each skill
+Portable agent skills for fast, low-overhead workflows on any model. Each skill
 is a lean adaptation of a conductor-style skill from
 [Repertoire](https://github.com/PythonShe/Repertoire), stripped of Claude Code
 specifics so it runs on any harness that reads `SKILL.md`.
@@ -16,8 +16,8 @@ specifics so it runs on any harness that reads `SKILL.md`.
 - Harness-agnostic: no Claude Code tool names (Agent, AskUserQuestion, Skill),
   no model pins, no plugin paths. Say "ask the user", "spawn a subagent if the
   harness supports it, otherwise do it inline".
-- Built for lighter models: short imperative steps, one concern per phase,
-  explicit stop points, no prose that a strong model would skim past anyway.
+- Built for speed and clarity: short imperative steps, one concern per phase,
+  explicit stop points, no filler prose.
 - Keep `SKILL.md` under ~150 lines. Move detail into a sibling file only when
   the main flow cannot read without it.
 - Description under 1024 characters; lead with what it does, then when to use it.

@@ -1,7 +1,7 @@
 # skills
 
-Portable, harness-agnostic agent skills built for fast workflows on lighter or
-weaker models.
+Portable, harness-agnostic agent skills for fast, low-overhead workflows that
+run on any model.
 
 These are lean adaptations of the conductor-style skills in
 [Repertoire](https://github.com/PythonShe/Repertoire), with the Claude Code
