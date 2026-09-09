@@ -1,0 +1,21 @@
+# Local-only eval and optimizer scratch beside each skill
+*-workspace/
+
+# Logs and temp
+*.log
+*.tmp
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Python caches
+__pycache__/
+*.pyc
+.venv/
