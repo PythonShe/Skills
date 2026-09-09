@@ -29,8 +29,11 @@ agents and options.
 |---|---|---|
 | `build` | One concrete change to build now, no spec or plan first | Repertoire `presto` |
 | `fix` | A reproducible bug, regression, or failing test to diagnose and fix | Repertoire `tuner` |
+| `improve` | "Make this repo better, you pick": an unattended session that finds and ships 3-5 small wins | Repertoire `jam` |
 
-Planned: `improve` (from `jam`).
+Each skill assumes subagents are cheap and fans out freely, and each dispatch
+has an inline fallback for agents without subagents. Skills that keep state in
+your project write it under `docs/skills/`.
 
 ## Layout
 
