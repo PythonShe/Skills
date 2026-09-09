@@ -46,6 +46,8 @@ The committed plan is the durable trail.
 
 ### Phase 0 — Locate the spec
 
+0. **Resuming?** Read the checklist and `git log --oneline`. If a draft plan
+   is committed, re-read it and resume at the first phase not done.
 1. **Find and read the spec in full.** Use the path the user gave, or look in
    `docs/skills/specs/` (where `spec` writes) and any obvious design doc.
    Confirm if ambiguous. Reading the spec is your job, not a scout's.
@@ -59,8 +61,10 @@ The committed plan is the durable trail.
    one `execute` session, split it at its cleanest seam into a sequence of
    plans: plan the first now, and list the rest with one-line deliverables
    under Notes for the executor.
-4. **Branch.** Plans are committed. If you are on main or master, create
-   `plan/<topic>` or get the user's consent to commit there.
+4. **Clean tree, then branch.** Plans are committed. Uncommitted changes
+   are the user's work: ask before touching anything. If you are on main or
+   master, create `plan/<topic>` or get the user's consent to commit there.
+   Every commit in this skill stages only the plan file.
 5. **Checklist**: one item per phase. If the harness has no task list, keep
    it in a scratch note.
 

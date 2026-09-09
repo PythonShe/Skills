@@ -45,6 +45,8 @@ keep it in a scratch note. The committed spec is the durable trail.
 
 ### Phase 0 — Understand and scope
 
+0. **Resuming?** Read the checklist and `git log --oneline`. If a draft spec
+   is committed, re-read it and resume at the first phase not done.
 1. Restate the idea in one sentence to confirm you have it right.
 2. **Decomposition gate.** If the request describes several independent
    subsystems, stop and flag it before spending questions on details. Split
@@ -55,8 +57,10 @@ keep it in a scratch note. The committed spec is the durable trail.
 4. **Context scout** (`scout-prompt.md`, read-only): dispatch once to map
    the relevant code, docs, and conventions into a compact brief. Read the
    brief, not the codebase. Skip only for a greenfield idea.
-5. **Branch.** Specs are committed. If you are on main or master, create
-   `spec/<topic>` or get the user's consent to commit there.
+5. **Clean tree, then branch.** Specs are committed. Uncommitted changes
+   are the user's work: ask before touching anything. If you are on main or
+   master, create `spec/<topic>` or get the user's consent to commit there.
+   Every commit in this skill stages only the spec file.
 
 ### Phase 1 — Clarify intent
 
@@ -89,7 +93,8 @@ concrete to challenge. Commit with `docs(spec): ...`.
 ### Phase 4 — Review panel
 
 Dispatch **three reviewers in parallel** (`reviewer-prompt.md`), one lens
-each, with the spec path:
+each, with the spec path and a one-paragraph brief of the idea, the agreed
+approach, and any concerns carried from the dialogue:
 
 - **Completeness and implementability**: TBDs, placeholders, missing
   sections, requirements too vague to build from, undefined interfaces.
@@ -100,9 +105,9 @@ each, with the spec path:
 
 Swap a lens when the work demands it (a data-heavy spec might want contracts
 and migration). Consolidate findings from the text, drop duplicates and
-anything not tied to a section. Revise the spec yourself. Commit. Re-run the
-panel only if revisions were large enough to introduce new risk, never as a
-counted loop.
+anything not tied to a section. Three PASS verdicts → Phase 5 directly.
+Otherwise revise the spec yourself and commit. Re-run the panel only if
+revisions were large enough to introduce new risk, never as a counted loop.
 
 ### Phase 5 — User approval
 

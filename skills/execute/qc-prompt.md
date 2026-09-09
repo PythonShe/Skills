@@ -26,8 +26,9 @@ Test command: [TEST]
 1. **Build**: run it. Clean? If `none (user-confirmed)`, judge by reading
    and say so.
 2. **Test**: run it. All pass? Meaningful tests for new behavior, or gaps
-   behind green? No runnable command and none discoverable → NOT_SHIPPABLE
-   with that as the blocker. Never assume green.
+   behind green? If `none (user-confirmed)`, judge the changed code by
+   reading and say so. Otherwise no runnable command and none discoverable
+   → NOT_SHIPPABLE with that as the blocker. Never assume green.
 3. **Requirements**: is every requirement satisfied by the code, not just
    claimed?
 4. **Integration**: do the parts fit? Contradictions, dead code, half-done

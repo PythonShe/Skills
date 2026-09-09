@@ -14,8 +14,8 @@ is wrong or missing.
 
 ## Goals and non-goals
 - **Goals**: what success looks like, as concrete bullets.
-- **Non-goals**: what we are deliberately not doing. An empty non-goals list
-  is a warning sign.
+- **Non-goals**: what we are deliberately not doing or deferring, each with
+  a one-line reason. An empty non-goals list is a warning sign.
 
 ## Approach
 The chosen design, and one or two sentences on why it beat the alternatives.
@@ -41,6 +41,4 @@ proves.
 Assumptions made while designing, stated plainly so reviewers can challenge
 them, and anything still unresolved.
 
-## Out of scope
-Work deliberately deferred or excluded, each with a one-line reason.
 ```
