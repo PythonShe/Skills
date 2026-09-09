@@ -33,10 +33,12 @@ agents and options.
 | `spec` | An idea or feature that needs designing into a build-ready spec | Repertoire `libretto` |
 | `plan` | A settled spec or design that needs a decision-complete implementation plan | Repertoire `score` |
 | `execute` | A written plan (or a spec) to build group by group with review and a QC gate | Repertoire `maestro` |
+| `address` | An open PR with review feedback or failing CI to verify, fix, and answer | Repertoire `coda` |
 
 Typical flows: `build` for one change, `fix` for a bug, `spec` then `plan`
 then `execute` for anything bigger (execute also accepts a spec directly for
-work of a few groups), `improve` when you have no target in mind.
+work of a few groups), `improve` when you have no target in mind, `address`
+once reviewers respond to the pushed PR.
 
 Each skill assumes subagents are cheap and fans out freely, and each dispatch
 has an inline fallback for agents without subagents. Skills that keep state in

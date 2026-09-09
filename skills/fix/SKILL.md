@@ -1,6 +1,6 @@
 ---
 name: fix
-description: Hunts a bug to its root cause and lands a verified fix — two independent investigators trace the mechanism blind to each other, the controller cross-examines their reports as the confidence gate, then a fixer commits a deliberately failing repro test before the fix, a skeptical reviewer checks cause and only cause, and a mechanical verifier proves red to green by reverting the fix. Use when the user reports a reproducible bug, regression, crash, or failing test — "fix this bug", "why is this test failing", "find the root cause". Commits as it goes, never merges, pushes only on request. Code that works but should be better is not a bug; name the change and use build.
+description: Hunts a bug to its root cause and lands a verified fix — two independent investigators trace the mechanism blind to each other, the controller cross-examines their reports as the confidence gate, then a fixer commits a deliberately failing repro test before the fix, a skeptical reviewer checks cause and only cause, and a mechanical verifier proves red to green by reverting the fix. Use when the user reports a reproducible bug, regression, crash, or failing test — "fix this bug", "why is this test failing", "find the root cause". Commits as it goes, never merges, pushes only on request. Code that works but should be better is not a bug; name the change and use build. Review feedback or failing CI on an open PR goes to address.
 ---
 
 # fix
