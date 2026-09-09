@@ -18,9 +18,15 @@ specifics so it runs on any harness that reads `SKILL.md`.
   harness supports it, otherwise do it inline".
 - Built for speed and clarity: short imperative steps, one concern per phase,
   explicit stop points, no filler prose.
-- Keep `SKILL.md` under ~150 lines. Move detail into a sibling file only when
+- Keep `SKILL.md` under ~200 lines. Move detail into a sibling file only when
   the main flow cannot read without it.
 - Description under 1024 characters; lead with what it does, then when to use it.
+- Names are plain verbs a user can guess without a lookup: `build`, `fix`,
+  `improve`. No project-specific names.
+- Subagents are assumed cheap: fan out freely, but every dispatch needs an
+  inline fallback for harnesses without them.
+- Skills that persist state in the target project write one file at
+  `docs/<skill>-<purpose>.md`, never a dedicated folder.
 - Every skill must degrade gracefully: if a step needs a capability the harness
   lacks, the skill says what to do instead.
 

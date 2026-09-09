@@ -25,7 +25,11 @@ agents and options.
 
 ## Skills
 
-_None yet. The first ports are on the way._
+| Skill | Use it when | Adapted from |
+|---|---|---|
+| `build` | One concrete change to build now, no spec or plan first | Repertoire `presto` |
+
+Planned: `fix` (from `tuner`), `improve` (from `jam`).
 
 ## Layout
 
