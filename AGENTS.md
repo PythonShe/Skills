@@ -25,8 +25,9 @@ specifics so it runs on any harness that reads `SKILL.md`.
   `improve`. No project-specific names.
 - Subagents are assumed cheap: fan out freely, but every dispatch needs an
   inline fallback for harnesses without them.
-- Skills that persist state in the target project write one file at
-  `docs/<skill>-<purpose>.md`, never a dedicated folder.
+- Skills that persist state in the target project write it under
+  `docs/skills/` (for example `docs/skills/improve-backlog.md`), never at the
+  top of `docs/` and never in a folder named after this repo's source.
 - Every skill must degrade gracefully: if a step needs a capability the harness
   lacks, the skill says what to do instead.
 

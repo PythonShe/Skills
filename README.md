@@ -28,8 +28,9 @@ agents and options.
 | Skill | Use it when | Adapted from |
 |---|---|---|
 | `build` | One concrete change to build now, no spec or plan first | Repertoire `presto` |
+| `fix` | A reproducible bug, regression, or failing test to diagnose and fix | Repertoire `tuner` |
 
-Planned: `fix` (from `tuner`), `improve` (from `jam`).
+Planned: `improve` (from `jam`).
 
 ## Layout
 
