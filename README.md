@@ -31,9 +31,9 @@ agents and options.
 | `fix` | A reproducible bug, regression, or failing test to diagnose and fix | Repertoire `tuner` |
 | `improve` | "Make this repo better, you pick": an unattended session that finds and ships 3-5 small wins | Repertoire `jam` |
 | `plan` | A settled spec or design that needs a decision-complete implementation plan | Repertoire `score` |
-| `run` | A written plan to execute group by group with review and a QC gate | Repertoire `maestro` |
+| `execute` | A written plan to execute group by group with review and a QC gate | Repertoire `maestro` |
 
-Typical flows: `build` for one change, `fix` for a bug, `plan` then `run` for
+Typical flows: `build` for one change, `fix` for a bug, `plan` then `execute` for
 anything bigger, `improve` when you have no target in mind.
 
 Each skill assumes subagents are cheap and fans out freely, and each dispatch

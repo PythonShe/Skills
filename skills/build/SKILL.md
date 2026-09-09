@@ -147,7 +147,7 @@ a severity. Merge the findings, dropping duplicates. Always run this phase.
    filled.
 4. **Two strikes, then the user.** Update the strike count on each
    NOT_SHIPPABLE. On the second, stop and ask the user, offering to hand the
-   work to `plan` and `run` or, if what fails is a bug, to `fix`.
+   work to `plan` and `execute` or, if what fails is a bug, to `fix`.
 
 ## Report
 

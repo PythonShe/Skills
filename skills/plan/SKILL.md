@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Turns a spec or agreed design into a decision-complete implementation plan — a read-only scout maps the codebase, the user approves the file structure and task grouping at one checkpoint, the controller writes the plan itself with exact paths, interfaces, named tests, and verify commands but no function bodies, then three parallel skeptical reviewers harden it before a final user-approval gate. The plan is the terminal artifact, never code. Use when a design is settled and the user wants the implementation plan — "write the implementation plan", "plan this out", "break the spec into tasks". Executing a finished plan goes to run; one small change with no plan needed goes to build.
+description: Turns a spec or agreed design into a decision-complete implementation plan — a read-only scout maps the codebase, the user approves the file structure and task grouping at one checkpoint, the controller writes the plan itself with exact paths, interfaces, named tests, and verify commands but no function bodies, then three parallel skeptical reviewers harden it before a final user-approval gate. The plan is the terminal artifact, never code. Use when a design is settled and the user wants the implementation plan — "write the implementation plan", "plan this out", "break the spec into tasks". Executing a finished plan goes to execute; one small change with no plan needed goes to build.
 ---
 
 # plan
@@ -18,7 +18,7 @@ context, and the adversarial review of the finished plan.
   done in the wrong phase with no review behind it.
 - **You plan; you delegate scrutiny.** Dispatch only the context scout and
   the reviewers. Editing the plan in response to review is your job.
-- **Groups are the unit.** Tasks are grouped the way `run` will execute
+- **Groups are the unit.** Tasks are grouped the way `execute` will build
   them: coupled work travels together, one implementer-sized unit per group,
   clean seams between groups.
 - **The plan is the terminal artifact.** Never implement. Never redesign:
@@ -40,7 +40,7 @@ file only.
 2. **Structure checkpoint** → user approves file map and groups.
 3. **Write the plan**, self-check, commit.
 4. **Review panel** (3 lenses, parallel) → revise, commit.
-5. **User approval** (terminal) → point to `run`, never invoke it.
+5. **User approval** (terminal) → point to `execute`, never invoke it.
 
 The committed plan is the durable trail.
 
@@ -57,7 +57,7 @@ The committed plan is the durable trail.
 3. **Scope check.** If a single implementer could just do it, say so and
    point to `build`. If the goal is really several unrelated goals, help the
    user pick the first; plan one at a time. If it is one goal too big for
-   one `run` session, split it at its cleanest seam into a sequence of
+   one `execute` session, split it at its cleanest seam into a sequence of
    plans: plan the first now, and list the rest with one-line deliverables
    under Notes for the executor.
 4. **Branch.** Plans are committed. If you are on main or master, create
@@ -135,7 +135,7 @@ Ask the user to read the committed plan and say whether they want changes.
 
 - **Changes**: structural → back to Phase 2; small → edit, commit, re-review
   only if warranted.
-- **Approved**: done. Say the natural next step is `run`. Do not invoke it,
+- **Approved**: done. Say the natural next step is `execute`. Do not invoke it,
   start implementing, or touch any source file.
 
 ## Status handling
@@ -153,7 +153,7 @@ Ask the user to read the committed plan and say whether they want changes.
 - Any placeholder pattern from the Phase 3 list.
 - Skipping the structure checkpoint.
 - Reading the whole codebase yourself instead of dispatching the scout.
-- Writing code, scaffolding, or invoking `run` after approval.
+- Writing code, scaffolding, or invoking `execute` after approval.
 
 ## Bundled files
 

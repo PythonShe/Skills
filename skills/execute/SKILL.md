@@ -1,9 +1,9 @@
 ---
-name: run
-description: Executes a written implementation plan through a pipeline of subagents — groups related tasks, builds each group with a fresh implementer plus one review-and-fix pass, then gates the whole branch behind three parallel skeptical reviewers with different lenses and an evidence-based build-and-test QC gate. The controller never reads source or edits code; it dispatches, consolidates, and decides. Use when a plan or task list exists and the user wants it built — "execute this plan", "build out the plan", "run the plan", or resuming an interrupted run. Producing the plan goes to plan; one scoped change with no plan goes to build. Commits as it goes, pushes only on request, never merges.
+name: execute
+description: Executes a written implementation plan through a pipeline of subagents — groups related tasks, builds each group with a fresh implementer plus one review-and-fix pass, then gates the whole branch behind three parallel skeptical reviewers with different lenses and an evidence-based build-and-test QC gate. The controller never reads source or edits code; it dispatches, consolidates, and decides. Use when a plan or task list exists and the user wants it built — "execute this plan", "build out the plan", "run the plan", or resuming an interrupted execute. Producing the plan goes to plan; one scoped change with no plan goes to build. Commits as it goes, pushes only on request, never merges.
 ---
 
-# run
+# execute
 
 A plan needs building. You direct implementers who write the code, reviewers
 who try to break it, and fixers who repair what reviewers find. You dispatch,
@@ -54,7 +54,7 @@ outside a dispatch role.
 4. **Clean tree.** Uncommitted changes are the user's work. Dirty
    `git status` → stop and ask before anything else.
 5. **Branch**: confirm a feature branch, not main or master. If not, create
-   `run/<slug>` or get consent. Then `BASE = git rev-parse HEAD`. Every
+   `execute/<slug>` or get consent. Then `BASE = git rev-parse HEAD`. Every
    whole-branch review is `BASE..HEAD`. Write BASE into the QC checklist
    item; on a resume where it is lost, ask the user for the start commit.
 6. **BUILD and TEST** from the plan header first, then the README or

@@ -9,7 +9,7 @@ short, not padded.
 # <Title> — Implementation Plan
 
 > **For the executor:** this plan is structured into groups, each sized for
-> one fresh implementer, with clean seams between them. Execute with `run`
+> one fresh implementer, with clean seams between them. Execute with `execute`
 > or any plan executor. Tasks use checkbox syntax for tracking.
 
 **Spec:** `docs/skills/specs/<file>.md` (or: derived from conversation, see Goal)
@@ -60,6 +60,6 @@ Conventions:
 - **Number tasks `<group>.<task>`** so reviews and fixes can point at them.
 - **Repeat interfaces at the point of use.** Cross-references die when tasks
   are pasted into separate implementer contexts.
-- **The header's Build and Test commands are load-bearing.** `run` reads them
+- **The header's Build and Test commands are load-bearing.** `execute` reads them
   from the plan before falling back to the README or manifest.
 - **An empty "Notes for the executor" is deleted**, not left as a heading.
