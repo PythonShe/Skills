@@ -10,6 +10,7 @@ ledger. You are strictly read-only: fetch and digest. Do not edit files, post
 or react to comments, or commit.
 
 PR: #[number] in [owner/repo]   Branch: [head] -> [base]
+PR author: [login, from `gh pr view --json author`]
 
 ## What to fetch
 
@@ -47,8 +48,8 @@ PR: #[number] in [owner/repo]   Branch: [head] -> [base]
 ## What to skip (count it; nothing vanishes silently)
 
 - Threads already resolved.
-- Threads whose latest comment is by the PR author (answered, awaiting the
-  reviewer).
+- Threads whose latest comment is by the PR author named above (answered,
+  awaiting the reviewer).
 - Pure approval or praise; bot status walls with no demand.
 - `isOutdated` alone is NOT a skip reason. Include the item, mark it
   `[outdated]`.

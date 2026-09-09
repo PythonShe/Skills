@@ -16,7 +16,8 @@ and gate what goes outward. You never read code yourself.
   editing code. Allowed: the clerk's ledger, read-only PR metadata (`gh pr
   view`, `gh pr checks`), read-only git metadata (`merge-base`, `rev-parse`,
   `log --oneline`, `status`, `diff --stat`), `gh pr checkout` at setup, and
-  the single `git push` after the publish gate. Without subagents, take each
+  after the publish gate clears, the single `git push` and the approved
+  reply posts. Without subagents, take each
   role yourself as a separate pass that starts from its brief only.
 - **Evidence outranks everyone.** An item earns a fix only when the verifier
   confirmed it in the code, and earns pushback only when the verifier refuted
@@ -52,11 +53,15 @@ and gate what goes outward. You never read code yourself.
    current branch. No open PR → stop and say so. Note `isCrossRepository`: a
    fork PR may refuse the final push unless maintainer edits are allowed.
    Flag it at the publish gate, not after approval.
-3. **Check out the PR branch** (`gh pr checkout <n>`). Require a clean tree.
-   Uncommitted changes are the user's work: ask before touching anything.
-4. **BASE** = `git merge-base HEAD <base-branch>`. **BUILD and TEST** from
-   the README or package manifest. Cannot find them? Ask. None? Record
-   `none (user-confirmed)`.
+3. **Clean tree first.** Uncommitted changes are the user's work: stop and
+   ask before anything else. Then `gh pr checkout <n>` if not already on the
+   PR branch.
+4. **BASE**: `git fetch origin <baseRefName>` then
+   `git merge-base HEAD origin/<baseRefName>` (for a fork PR, the base repo's
+   remote). If merge-base fails, ask the user for the base ref; never guess
+   from a local branch, which may be stale and widen the scope. **BUILD and
+   TEST** from the README or package manifest. Cannot find them? Ask. None?
+   Record `none (user-confirmed)`.
 5. **Cost gate**: if the user did not name this skill, confirm in one message
    the PR and the verify → fix → verdict pipeline about to run.
 6. **Clerk** (`feedback-clerk-prompt.md`): fetches reviews, inline threads,
@@ -71,8 +76,9 @@ and gate what goes outward. You never read code yourself.
 
 1. **One verifier** (`verifier-prompt.md`), read-only, with the whole ledger,
    the PR's purpose, `BASE..HEAD`, BUILD, TEST. Only for 15+ items split
-   into **sequential** batches. Never parallel verifiers: their test runs
-   collide.
+   into **sequential** batches, pasting the earlier batches' verdicts into
+   each later brief so related items still get one verdict. Never parallel
+   verifiers: their test runs collide.
 2. Per F-id it returns one of:
    - **VALID** — confirmed, with a fix directive and acceptance check.
    - **PARTIAL** — the concern is real, the remedy wrong; corrected directive.
@@ -133,11 +139,13 @@ branch changed) and go to Phase 4 for replies only.
 3. **Publish, push first, replies second.** `git push` (never force). Confirm
    it succeeded before posting: a reply pointing at an unpushed commit points
    at nothing. Push fails → stop and report. Then inline replies in-thread:
-   `gh api repos/{owner}/{repo}/pulls/{pr}/comments/{first-comment-id}/replies -f body=…`
+   `gh api repos/{owner}/{repo}/pulls/<pr>/comments/<reply-to-id>/replies -f body=…`
    and one conversation comment for everything thread-less:
-   `gh api repos/{owner}/{repo}/issues/{pr}/comments -f body=…`.
-4. **Report**: the per-item table, whether the panel ran and why, QC's
-   evidence, and what remains for the user: UNCLEAR threads awaiting
+   `gh api repos/{owner}/{repo}/issues/<pr>/comments -f body=…`.
+   gh expands `{owner}` and `{repo}` itself; substitute `<pr>` and
+   `<reply-to-id>` (from the ledger) yourself.
+4. **Report**: the per-item table, the clerk's skipped counts, whether the
+   panel ran and why, QC's evidence, and what remains for the user: UNCLEAR threads awaiting
    reviewers, escalations, and the merge, which is never yours.
 
 Re-runnable: after reviewers respond, the next run's clerk harvests only what

@@ -30,7 +30,8 @@ Build: [BUILD]   Test: [TEST]
 1. **Build**: run it. Clean? If `none (user-confirmed)`, judge by reading
    and say so.
 2. **Test**: run it. All pass? Meaningful tests pin the fixed behavior, or
-   gaps behind green? No runnable command and none discoverable →
+   gaps behind green? If `none (user-confirmed)`, judge the changed code by reading and
+   say so. Otherwise no runnable command and none discoverable →
    NOT_MERGEABLE with that as the blocker. Never assume green.
 3. **Resolution**: read the fix diff ([FIXBASE..HEAD]) in full. Is each item
    above resolved in the code, not just claimed? Hunt for fixes that dodge
