@@ -30,6 +30,11 @@ agents and options.
 | `build` | One concrete change to build now, no spec or plan first | Repertoire `presto` |
 | `fix` | A reproducible bug, regression, or failing test to diagnose and fix | Repertoire `tuner` |
 | `improve` | "Make this repo better, you pick": an unattended session that finds and ships 3-5 small wins | Repertoire `jam` |
+| `plan` | A settled spec or design that needs a decision-complete implementation plan | Repertoire `score` |
+| `run` | A written plan to execute group by group with review and a QC gate | Repertoire `maestro` |
+
+Typical flows: `build` for one change, `fix` for a bug, `plan` then `run` for
+anything bigger, `improve` when you have no target in mind.
 
 Each skill assumes subagents are cheap and fans out freely, and each dispatch
 has an inline fallback for agents without subagents. Skills that keep state in
