@@ -31,6 +31,11 @@ specifics so it runs on any harness that reads `SKILL.md`.
 - Every skill must degrade gracefully: if a step needs a capability the harness
   lacks, the skill says what to do instead.
 
+## Commits
+
+Conventional Commits: `feat(<skill>):` for a new or changed skill, `docs:`
+for README and these files, `chore:` for tooling.
+
 ## Install
 
 ```
