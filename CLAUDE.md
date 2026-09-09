@@ -34,7 +34,7 @@ specifics so it runs on any harness that reads `SKILL.md`.
 ## Install
 
 ```
-npx skills add PythonShe/skills
+npx skills add PythonShe/Skills
 ```
 
 ## License

@@ -11,13 +11,13 @@ Code, Codex, Cursor, Gemini CLI, OpenCode, and others.
 ## Install
 
 ```
-npx skills add PythonShe/skills
+npx skills add PythonShe/Skills
 ```
 
 Install a single skill:
 
 ```
-npx skills add PythonShe/skills --skill <name>
+npx skills add PythonShe/Skills --skill <name>
 ```
 
 See [vercel-labs/skills](https://github.com/vercel-labs/skills) for supported
