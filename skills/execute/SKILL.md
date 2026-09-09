@@ -1,6 +1,6 @@
 ---
 name: execute
-description: Executes a written implementation plan through a pipeline of subagents — groups related tasks, builds each group with a fresh implementer plus one review-and-fix pass, then gates the whole branch behind three parallel skeptical reviewers with different lenses and an evidence-based build-and-test QC gate. The controller never reads source or edits code; it dispatches, consolidates, and decides. Use when a plan or task list exists and the user wants it built — "execute this plan", "build out the plan", "run the plan", or resuming an interrupted execute. Producing the plan goes to plan; one scoped change with no plan goes to build. Commits as it goes, pushes only on request, never merges.
+description: Executes a written implementation plan through a pipeline of subagents — groups related tasks, builds each group with a fresh implementer plus one review-and-fix pass, then gates the whole branch behind three parallel skeptical reviewers with different lenses and an evidence-based build-and-test QC gate. The controller never reads source or edits code; it dispatches, consolidates, and decides. Use when a plan or task list exists and the user wants it built — "execute this plan", "build out the plan", "run the plan", or resuming an interrupted execute. Given only a spec, it derives a lightweight grouped task list, gets the user's approval, and proceeds. A reviewed plan for bigger work goes to plan first; one scoped change with no plan goes to build. Commits as it goes, pushes only on request, never merges.
 ---
 
 # execute
@@ -8,6 +8,12 @@ description: Executes a written implementation plan through a pipeline of subage
 A plan needs building. You direct implementers who write the code, reviewers
 who try to break it, and fixers who repair what reviewers find. You dispatch,
 consolidate, commit, and decide. You never read source or edit files.
+
+## Input
+
+The input is a written plan: a file with grouped tasks, ideally from `plan`.
+A spec alone is also accepted (see Phase 0, step 2). A bare idea with neither
+is not: point to `spec`, or to `build` if it is one small change.
 
 ## Rules
 
@@ -34,8 +40,8 @@ outside a dispatch role.
 
 ## Pipeline
 
-0. **Setup** — read the plan, group tasks, branch, BASE, BUILD/TEST,
-   checklist, cost gate.
+0. **Setup** — read the plan (or derive one from the spec), group tasks,
+   branch, BASE, BUILD/TEST, checklist, cost gate.
 1. **Per group** — implementer → reviewer → fixer (skipped on clean PASS).
 2. **Panel** — three lensed reviewers over the whole branch, in parallel →
    consolidate → sequential fixers.
@@ -49,6 +55,16 @@ outside a dispatch role.
    from its last commit. Read the strike count from the QC item.
 2. **Read the plan once.** Extract every task with its full text and
    surrounding context. You will paste this into dispatches.
+   **Spec only, no plan?** Read the spec in full and derive a lightweight
+   plan yourself: the file map, then task groups, each task with files,
+   behavior and interfaces, named tests, and a verify command, in the shape
+   of the plan template that `plan` uses. No function bodies. Present the
+   groups compactly and get the user's approval before anything else; if
+   the spec leaves a design decision open, stop and say it needs `spec`
+   first. If the work is more than about five groups, recommend `plan` for
+   a reviewed plan instead, but proceed if the user says so. Commit the
+   derived plan to `docs/skills/plans/YYYY-MM-DD-<topic>.md` on the work
+   branch (after step 5) with `docs(plan): ...`, then treat it as the plan.
 3. **Group related tasks** (see Grouping). If the plan already has groups,
    use them.
 4. **Clean tree.** Uncommitted changes are the user's work. Dirty
@@ -57,8 +73,9 @@ outside a dispatch role.
    `execute/<slug>` or get consent. Then `BASE = git rev-parse HEAD`. Every
    whole-branch review is `BASE..HEAD`. Write BASE into the QC checklist
    item; on a resume where it is lost, ask the user for the start commit.
-6. **BUILD and TEST** from the plan header first, then the README or
-   manifest. Cannot find them? Ask. None? Record `none (user-confirmed)`.
+6. **BUILD and TEST** from the plan header first, then the spec, the README,
+   or the manifest. Cannot find them? Ask. None? Record
+   `none (user-confirmed)`.
 7. **Cost gate**: if the user did not name this skill, confirm in one
    message: the group count and rough dispatch count.
 8. **Checklist**: one item per group, plus Panel, Panel fixes, QC
@@ -157,6 +174,7 @@ Pick three that fit this work so the reviewers cover different failures:
 - A reviewer that trusts the implementer's report.
 - An unresolved range or a guessed BUILD or TEST handed to a reviewer or QC.
 - Skipping the panel because Phase 1 "already reviewed".
+- Starting to build from a spec before the user approved the derived groups.
 - Looping QC past three strikes. Merging the branch.
 
 ## Bundled files

@@ -47,13 +47,12 @@ The committed plan is the durable trail.
 ### Phase 0 — Locate the spec
 
 1. **Find and read the spec in full.** Use the path the user gave, or look in
-   `docs/skills/specs/` and any obvious design doc. Confirm if ambiguous.
-   Reading the spec is your job, not a scout's.
+   `docs/skills/specs/` (where `spec` writes) and any obvious design doc.
+   Confirm if ambiguous. Reading the spec is your job, not a scout's.
 2. **No written spec?** Run a short clarify pass: what is being built, the
    constraints, the success criteria, in a handful of questions. This is not
    a design dialogue. If real design decisions are open (approach unchosen,
-   interfaces unsettled), stop. Settle the design with the user in
-   conversation and write it down as a short spec before planning.
+   interfaces unsettled), stop and point to `spec`.
 3. **Scope check.** If a single implementer could just do it, say so and
    point to `build`. If the goal is really several unrelated goals, help the
    user pick the first; plan one at a time. If it is one goal too big for

@@ -22,7 +22,7 @@ specifics so it runs on any harness that reads `SKILL.md`.
   the main flow cannot read without it.
 - Description under 1024 characters; lead with what it does, then when to use it.
 - Names are plain verbs a user can guess without a lookup: `build`, `fix`,
-  `improve`. No project-specific names.
+  `improve`, `spec`, `plan`, `execute`. No project-specific names.
 - Subagents are assumed cheap: fan out freely, but every dispatch needs an
   inline fallback for harnesses without them.
 - Skills that persist state in the target project write it under
