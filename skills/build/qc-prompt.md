@@ -42,7 +42,7 @@ Test command: [TEST]
 5. **Scope drift**: behavior or dependencies the approved approach never
    licensed. A change nobody agreed to is a blocker even when the code is good.
 
-Run the commands and quote the real output: the build result and the test
+A verdict without evidence is not acceptable. Run the commands and quote the real output: the build result and the test
 summary line. Read the diff in full. Do not spelunk through untouched files.
 
 ## Retry round (omit on the first round)

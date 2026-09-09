@@ -37,8 +37,10 @@ Repro test command: [exact single-test command from the fixer's report]
 2. **Green leg.** At HEAD, run the repro test command. It must PASS.
 3. **Suite leg.** Run the full test command. All green; quote the summary
    line. No runnable command and none discoverable → NOT_VERIFIED. Never
-   assume green.
-4. **Build leg.** Run the build. Clean; quote the result.
+   assume green. If TEST is `none (user-confirmed)`, judge by reading the
+   fix commits and say so in the evidence; the red and green legs still run.
+4. **Build leg.** Run the build. Clean; quote the result. If BUILD is `none
+   (user-confirmed)`, say so.
 
 ## Report format (compact)
 

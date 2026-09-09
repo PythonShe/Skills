@@ -35,7 +35,8 @@ Confirm you are on the named branch before committing.
    no cleanups, no defensive special-cases that hide the symptom. If the fix
    keeps growing beyond the mechanism, stop and report.
 4. **Prove green.** The repro test passes; the full test suite passes. Quote
-   both results.
+   both results. If TEST is `none (user-confirmed)`, the repro test must
+   still be runnable on its own; say how.
 5. **Commit the fix** separately: `fix: [root cause one-liner]`.
 
 ## Report format (compact)

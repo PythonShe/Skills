@@ -38,7 +38,7 @@ Test command: [TEST]
 5. **Clean amputations**: no debris from dropped or amputated jobs.
 6. **Ship-blockers**: security issues, data loss, broken core flows.
 
-Run the commands and quote the real output. Skim the diff for acceptance
+A verdict without evidence is not acceptable. Run the commands and quote the real output. Skim the diff for acceptance
 checks; rely on build and tests for the rest.
 
 ## Retry round (omit on the first round)

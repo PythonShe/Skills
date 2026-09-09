@@ -13,9 +13,16 @@ everything you need below. Do not go looking for the plan file.
 
 ## Context
 
-[Where this fits in the system, relevant existing files and patterns,
-dependencies, anything built by earlier groups that you build on or must not
-break.]
+[From the plan: where this fits in the system, the file structure and
+patterns the plan names, dependencies, and what earlier groups built (with
+commit SHAs) that you build on or must not break.]
+
+## Work already on the branch (omit on a first dispatch)
+
+[Only when a prior implementer built part of this group: commit SHAs and what
+each covers · what is DONE and must not be rebuilt · what QC found missing
+or wrong · what remains. If present, read those commits first and build the
+remainder on top. Do not restart or redo committed work.]
 
 Work from: [directory]   Branch: [branch]
 Test command: [TEST]
@@ -25,8 +32,9 @@ report NEEDS_CONTEXT.
 
 ## Before you begin
 
-If the requirements, approach, dependencies, or acceptance are unclear, ask
-now. A question before starting is cheap; a wrong guess is expensive.
+If the requirements, approach, dependencies, or acceptance are unclear,
+stop and report NEEDS_CONTEXT with the exact question. That is cheap; a
+wrong guess is expensive.
 
 ## Your job
 

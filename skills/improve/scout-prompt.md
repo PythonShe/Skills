@@ -57,6 +57,8 @@ At most six candidates, each with:
 - **Evidence**: `file:line` anchors. Unanchored is not a candidate.
 - **Size**: S (a sitting) or M (a stretch). L does not belong here.
 - **Risk**: one line.
+- **Leverage**: a skill installed in this session that covers the surface
+  (design, animation, performance) and is worth loading to build it, or none.
 - **Breaking?**: must be `no`. Great but breaking ideas go under
   OUT_OF_SCOPE, one line each.
 
@@ -71,7 +73,7 @@ nothing through your lens, say NONE. A polished surface is a real finding.
 - **Status:** FOUND | NONE | BLOCKED
 - **Users:** one line, who and how you know.
 - **Candidates:** one line each:
-  `[size] Title — benefit · evidence file:line · risk · breaking: no`
+  `[size] Title — benefit · evidence file:line · risk · breaking: no · leverage: <skill>|none`
 - **Patterns & constraints:** one per line, or `none`.
 - **OUT_OF_SCOPE:** breaking but interesting, one line each, or `none`.
 - **Stale backlog:** carried entries found stale, one line each with why,

@@ -39,8 +39,9 @@ report NEEDS_CONTEXT.
 
 ## Before you begin
 
-If the requirements, approach, or acceptance are unclear, ask now. A question
-before starting is cheap; a wrong guess is expensive.
+If the requirements, approach, or acceptance are unclear, stop and report
+NEEDS_CONTEXT with the exact question. That is cheap; a wrong guess is
+expensive.
 
 ## Your job
 

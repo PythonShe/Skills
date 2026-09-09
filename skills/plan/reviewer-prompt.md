@@ -48,6 +48,9 @@ one of them, through your lens only:
   group seams that split coupled work or weld independent work, a group too
   big for one implementer to hold in context.
 
+If your lens is a custom one not listed above, hunt for what that lens
+names instead.
+
 Judge what the plan says, not how it is worded. A real gap would lead an
 implementer to build the wrong thing or get stuck. Point to the exact group
 and task. If you cannot tie a complaint to a specific part of the plan, it is

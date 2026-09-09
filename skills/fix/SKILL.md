@@ -1,6 +1,6 @@
 ---
 name: fix
-description: Hunts a bug to its root cause and lands a verified fix — two independent investigators trace the mechanism blind to each other, the controller cross-examines their reports as the confidence gate, then a fixer commits a deliberately failing repro test before the fix, a skeptical reviewer checks cause and only cause, and a mechanical verifier proves red to green by reverting the fix. Use when the user reports a reproducible bug, regression, crash, or failing test — "fix this bug", "why is this test failing", "find the root cause". Commits as it goes, never merges, pushes only on request. Code that works but should be better goes to improve.
+description: Hunts a bug to its root cause and lands a verified fix — two independent investigators trace the mechanism blind to each other, the controller cross-examines their reports as the confidence gate, then a fixer commits a deliberately failing repro test before the fix, a skeptical reviewer checks cause and only cause, and a mechanical verifier proves red to green by reverting the fix. Use when the user reports a reproducible bug, regression, crash, or failing test — "fix this bug", "why is this test failing", "find the root cause". Commits as it goes, never merges, pushes only on request. Code that works but should be better is not a bug; name the change and use build.
 ---
 
 # fix
@@ -13,6 +13,8 @@ or form your own theory: a judge who investigates becomes a third, biased rival.
 - **You judge; you never play.** No reading source files or diffs, no
   hypotheses, no fixes. Allowed: assembling the bug brief, read-only git
   metadata (`log --oneline`, `status`, `rev-parse`), keeping the checklist.
+  Without subagents you must take the dispatch roles yourself; keep them as
+  separate passes and judge only from the written reports.
 - **No fix without an evidence-backed root cause.** A traced mechanism: the
   defect, the chain from defect to symptom, and why fixing it kills the
   symptom. "Plausible" is not a root cause.
@@ -30,9 +32,11 @@ or form your own theory: a judge who investigates becomes a third, biased rival.
 Subagents are cheap. Every investigator, fixer, reviewer, and verifier is a
 fresh dispatch with a self-contained brief from the bundled prompt files. Run
 independent dispatches in parallel. Without subagents, run each brief yourself
-in sequence, in a fresh pass that starts from the brief only. The blind
-investigation still holds: finish and record report A before starting B, and
-never carry A's findings into B.
+in sequence, in a fresh pass that starts from the brief only. Run investigator
+B first (brief only), write its report down, then run A with the scout's
+ranking. You cannot un-know B's findings, so say in the final report that the
+investigations were sequential, not blind, and lean harder on the repair
+gates.
 
 ## Pipeline
 
@@ -58,15 +62,20 @@ never carry A's findings into B.
    - **Environment**: versions, platform, flags, anything unusual.
    Ask the user for anything missing rather than letting agents guess.
 3. **BUILD and TEST** from the README or package manifest. Cannot find them?
-   Ask.
-4. **Branch**: confirm you are on a feature branch, not main or master. If
+   Ask. Project has none? Record `none (user-confirmed)` and pass that token
+   to the fixer and verifier.
+4. **Clean tree.** Uncommitted changes are the user's work, and this skill's
+   investigators and verifier reset the working tree. Dirty `git status` →
+   stop and ask before anything else.
+5. **Branch**: confirm you are on a feature branch, not main or master. If
    not, create `fix/<slug>` or get consent.
-5. **Trivial?** If intake reveals an obvious one-line typo with an obvious
+6. **Trivial?** If the user's own report already names an obvious one-line
    fix, say so and confirm with the user before running the full pipeline.
-6. **Cost gate**: if the user did not name this skill, confirm in one message:
+7. **Cost gate**: if the user did not name this skill, confirm in one message:
    the brief and that a two-investigator hunt is about to run.
-7. **Checklist**: Scout, Investigator A, Investigator B, Cross-examination,
-   Repair (strikes 0/3), Verify, Report.
+8. **Checklist**: Scout, Investigator A, Investigator B, Cross-examination,
+   Repair (strikes 0/3), Verify, Report. If the harness has no task list,
+   keep it in a scratch note.
 
 ### Phase 1 — Investigation
 

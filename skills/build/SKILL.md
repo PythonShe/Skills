@@ -10,7 +10,8 @@ Recon, a decision, the work, a check. Fast, never careless.
 ## Rules
 
 - **Nothing is written before the user approves an approach.** The gate in
-  Phase 2 is the only approval in this flow. Do not skip it.
+  Phase 2 is the only approval in this flow. Do not skip it. The one
+  exception is the below-the-floor shortcut in Phase 0, which you announce.
 - **Never review your own code.** Reviews and QC run in a fresh context: a
   subagent if the harness has them, otherwise a fresh pass that reads only
   the brief and the diff, never your working notes.
@@ -54,12 +55,12 @@ sequence, and treat "fresh context" as: start from the brief and the diff only.
    - Trivial with one obvious answer (rename, typo, one-line config): just do
      it, say you skipped the pipeline, stop.
    - Spans several modules, needs a new subsystem, or rests on a design
-     decision the user has not made: say so and stop. It needs a spec or plan.
+     decision the user has not made: say so and stop. Point to `plan`.
    - Otherwise proceed. Unsure? Let the scout's size call decide at the gate.
 4. **BRANCH**: use a named branch if the user gave one, the current branch if
    it is already a feature branch, otherwise plan `build/<slug>`. Check
    `git status`: uncommitted changes are the user's work. Surface them and
-   resolve before Phase 3. Never touch them.
+   resolve with the user before cutting the branch. Never touch them.
 5. **BUILD and TEST** from the README or package manifest. Cannot find them?
    Ask. Project has none? Record `none (user-confirmed)` and pass that to QC.
 6. **Cost gate**: if the user did not name this skill, ask once, in one
@@ -146,7 +147,7 @@ a severity. Merge the findings, dropping duplicates. Always run this phase.
    filled.
 4. **Two strikes, then the user.** Update the strike count on each
    NOT_SHIPPABLE. On the second, stop and ask the user, offering to hand the
-   work to a planned flow or, if what fails is a bug, to `fix`.
+   work to `plan` and `run` or, if what fails is a bug, to `fix`.
 
 ## Report
 

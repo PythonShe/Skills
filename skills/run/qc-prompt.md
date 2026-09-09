@@ -26,7 +26,7 @@ Test command: [TEST]
 1. **Build**: run it. Clean? If `none (user-confirmed)`, judge by reading
    and say so.
 2. **Test**: run it. All pass? Meaningful tests for new behavior, or gaps
-   behind green? No runnable command and none discoverable → NOT_MERGEABLE
+   behind green? No runnable command and none discoverable → NOT_SHIPPABLE
    with that as the blocker. Never assume green.
 3. **Requirements**: is every requirement satisfied by the code, not just
    claimed?
@@ -34,7 +34,7 @@ Test command: [TEST]
    seams, regressions across boundaries?
 5. **Ship-blockers**: security issues, data loss, broken core flows.
 
-Run the commands and quote the real output: build result and test summary
+A verdict without evidence is not acceptable. Run the commands and quote the real output: build result and test summary
 line. Skim the diff for requirements; rely on build and tests for the rest.
 
 ## Retry round (omit on the first round)
@@ -46,9 +46,9 @@ touch the rest. Anything new still blocks.]
 
 ## Report format
 
-- **Verdict:** MERGEABLE | NOT_MERGEABLE
+- **Verdict:** SHIPPABLE | NOT_SHIPPABLE
 - **Evidence:** build result + test summary (actual output lines).
-- **Blocking issues** (only if NOT_MERGEABLE), one per line, typed:
+- **Blocking issues** (only if NOT_SHIPPABLE), one per line, typed:
   `[defect] path/file.ext:88 · critical · null deref on empty input`
   `[implementation] feature X from the plan is not built anywhere`
   `[defect]` is fixer-actionable. `[implementation]` is a missing or wrong

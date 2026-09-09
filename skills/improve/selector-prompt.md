@@ -55,7 +55,8 @@ carried: dead anchors, merged duplicates, breaking or L-sized work.
   - Brief: 2-4 lines, what to build and why the user cares.
   - Acceptance: one or two lines, how anyone would know it works.
   - Anchors: the `file:line` evidence from the scout.
-  - Patterns: conventions and constraints from the scouts, or `none`.
+  - Patterns: conventions and constraints from the scouts, and any skill
+    leverage the scout named, or `none`.
   - Risk: one line.
 - **Rejected (notable):** one line each: title · which rule killed it ·
   `backlog: <1-5>|no` · benefit and evidence when the score is numeric.

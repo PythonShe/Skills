@@ -26,8 +26,9 @@ fits, build it, and prove it shipped clean. Announce, do not ask.
   and reported. A four-job branch that ships beats a five-job branch that
   does not.
 - **One writer at a time. Everyone who writes commits.**
-- **The road not taken is kept.** The run ends by writing the backlog at
-  `docs/skills/improve-backlog.md` in the target project.
+- **The road not taken is kept.** A run that reaches its report ends by
+  writing the backlog at `docs/skills/improve-backlog.md` in the target
+  project.
 - **Never build on main or master. Never merge. Push only when asked.**
 
 ## Subagents
@@ -63,9 +64,11 @@ only, and still never read code outside a dispatch role.
    message: an unattended session on a fresh branch that picks and builds
    its own 3-5 jobs, with a rough dispatch count of ten to twenty.
 5. **Cut `improve/<YYYY-MM-DD>`** from HEAD (suffix `-2` on collision).
-   `BASE = git rev-parse HEAD`.
-6. **Checklist**: Scouts, Docket, Finale review (BASE: sha), Finale QC
-   (strikes 0/2), Backlog, Report. Job items are inserted after Phase 2.
+   `BASE = git rev-parse HEAD`. Note the branch you cut from.
+6. **Checklist**: Scouts, Docket, Finale review (BASE: sha, cut from:
+   branch), Finale QC (strikes 0/2), Backlog, Report. Job items are inserted
+   after Phase 2. If the harness has no task list, keep it in a scratch
+   note.
 
 ### Phase 1 — Scouting
 
@@ -82,7 +85,8 @@ only, and still never read code outside a dispatch role.
    line so Phase 5 prunes them.
 3. Scouts never edit, build, or test.
 4. Each returns at most six candidates with title, benefit, `file:line`
-   evidence, size (S/M), risk, and `breaking: no`, plus local patterns.
+   evidence, size (S/M), risk, `breaking: no`, and leverage (an installed
+   skill worth loading to build it, or none), plus local patterns.
 5. A scout returning NONE or BLOCKED is noted; the others proceed. All three
    empty → report honestly and end. An empty docket on a polished repo is a
    finding.
@@ -98,8 +102,8 @@ only, and still never read code outside a dispatch role.
    than three survivors is fine; never pad with rejects.
 3. **Announce the docket** in one line per job, and the top rejects with
    reasons. Do not wait for a reply. Insert one checklist item per job
-   carrying its full docket block verbatim; that is the docket's only durable
-   copy.
+   carrying its full docket block verbatim (or in the scratch note); that is
+   the docket's only durable copy.
 
 ### Phase 3 — Build loop
 

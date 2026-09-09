@@ -39,7 +39,7 @@ outside a dispatch role.
 1. **Per group** — implementer → reviewer → fixer (skipped on clean PASS).
 2. **Panel** — three lensed reviewers over the whole branch, in parallel →
    consolidate → sequential fixers.
-3. **QC** — build and tests. MERGEABLE → report. NOT_MERGEABLE → route
+3. **QC** — build and tests. SHIPPABLE → report. NOT_SHIPPABLE → route
    blockers, retry. Third strike → ask the user.
 
 ### Phase 0 — Setup
@@ -51,16 +51,19 @@ outside a dispatch role.
    surrounding context. You will paste this into dispatches.
 3. **Group related tasks** (see Grouping). If the plan already has groups,
    use them.
-4. **Branch**: confirm a feature branch, not main or master. If not, create
-   `run/<slug>` or get consent.
-5. **BASE** = `git merge-base HEAD <main or base branch>`. Every whole-branch
-   review is `BASE..HEAD`.
+4. **Clean tree.** Uncommitted changes are the user's work. Dirty
+   `git status` → stop and ask before anything else.
+5. **Branch**: confirm a feature branch, not main or master. If not, create
+   `run/<slug>` or get consent. Then `BASE = git rev-parse HEAD`. Every
+   whole-branch review is `BASE..HEAD`. Write BASE into the QC checklist
+   item; on a resume where it is lost, ask the user for the start commit.
 6. **BUILD and TEST** from the plan header first, then the README or
    manifest. Cannot find them? Ask. None? Record `none (user-confirmed)`.
 7. **Cost gate**: if the user did not name this skill, confirm in one
    message: the group count and rough dispatch count.
 8. **Checklist**: one item per group, plus Panel, Panel fixes, QC
-   (strikes 0/3).
+   (strikes 0/3, BASE: sha). If the harness has no task list, keep it in a
+   scratch note.
 
 ### Phase 1 — Build each group
 
@@ -74,7 +77,9 @@ For each group, in order:
    verbatim.
 3. **Fixer** (`fixer-prompt.md`) only if the reviewer found something. One
    pass, no re-review. Exception: a finding that is both critical and
-   complex gets one extra reviewer-plus-fixer round on that issue alone.
+   complex gets one extra round on that issue alone: a reviewer that
+   inspects the fix, then a fixer. Still unresolved → carry it into the
+   panel briefs, do not loop.
    PARTIALLY_FIXED or COULD_NOT_FIX → record it in the group's checklist
    item and carry it into the panel briefs. Never re-loop Phase 1.
 4. Mark the group done and move on.
@@ -98,14 +103,15 @@ Only after every group passed Phase 1.
 ### Phase 3 — QC
 
 1. **QC** (`qc-prompt.md`) with `BASE..HEAD`, BUILD, TEST, and the plan's
-   requirements. It runs build and tests and returns MERGEABLE or
-   NOT_MERGEABLE with typed blockers.
-2. **MERGEABLE** → report. Push only if asked. Never merge.
-3. **NOT_MERGEABLE** → route each blocker: `[defect]` to a fixer,
-   sequentially; `[implementation]` back to that group's implementer, or to
-   the user if the plan itself is at fault. Re-run QC with the retry section
+   requirements. It runs build and tests and returns SHIPPABLE or
+   NOT_SHIPPABLE with typed blockers.
+2. **SHIPPABLE** → report. Push only if asked. Never merge.
+3. **NOT_SHIPPABLE** → route each blocker: `[defect]` to a fixer,
+   sequentially; `[implementation]` back to a fresh implementer for that
+   group with the prompt's "Work already on the branch" section filled, or
+   to the user if the plan itself is at fault. Re-run QC with the retry section
    filled.
-4. **Three strikes, then the user.** Update the count on each NOT_MERGEABLE.
+4. **Three strikes, then the user.** Update the count on each NOT_SHIPPABLE.
    On the third, stop and ask the user how to proceed.
 
 ## Grouping
@@ -142,7 +148,7 @@ Pick three that fit this work so the reviewers cover different failures:
 - **Fixer**: FIXED → proceed. PARTIALLY_FIXED / COULD_NOT_FIX → Phase 1:
   carry into the panel brief. Phase 3: counts toward strikes, re-route next
   round.
-- **Reviewer**: PASS / FAIL. **QC**: MERGEABLE / NOT_MERGEABLE.
+- **Reviewer**: PASS / FAIL. **QC**: SHIPPABLE / NOT_SHIPPABLE.
 
 ## Red flags
 
@@ -159,4 +165,4 @@ Pick three that fit this work so the reviewers cover different failures:
 - `reviewer-prompt.md` — skeptical reviewer, broad mode for Phase 1, one
   lens each for the panel.
 - `fixer-prompt.md` — repair listed findings and commit.
-- `qc-prompt.md` — whole-branch MERGEABLE / NOT_MERGEABLE verdict.
+- `qc-prompt.md` — whole-branch SHIPPABLE / NOT_SHIPPABLE verdict.

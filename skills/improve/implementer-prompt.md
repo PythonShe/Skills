@@ -20,7 +20,8 @@ do not build the neighborhood: the job is the whole contract.
 ## Where it lands
 
 [Anchors: `file:line` evidence, plus patterns and constraints the scout
-named. The change should look like its neighbors.]
+named. The change should look like its neighbors. If the docket names a
+skill as leverage, load it before you start.]
 
 [If a prior job this session touched nearby code: what it changed and the
 commit SHAs, so you build on it rather than colliding.]
